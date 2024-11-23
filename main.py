@@ -20,17 +20,15 @@ while True:
         gamepad.update()
         time.sleep(0.1)
 
-        gamepad.press_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
-    gamepad.update()  # Update the gamepad to reflect the change
-    print("A button pressed")
+def press(btn):
+    global gamepad
 
-    # Hold the button for a short duration
-    time.sleep(0.5)
+    gamepad.press_button(btn)
+    gamepad.update()
+    gamepad.release_button(btn)
+    gamepad.update()
 
-    # Release the A button
-    gamepad.release_button(button=vg.XUSB_BUTTON.XUSB_GAMEPAD_A)
-    gamepad.update()  # Update the gamepad to reflect the change
-    print("A button released")
+press(XUSB_BUTTON.XUSB_GAMEPAD_A)
 
     # Wait for a short duration before pressing again
     time.sleep(0.5)
